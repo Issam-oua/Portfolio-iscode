@@ -323,7 +323,43 @@
     </footer>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        
+        // Replace with your actual Public Key from EmailJS
+        emailjs.init("ycR6FL2UoxWEH-kFL");
+
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            emailjs.sendForm('service_n31kaxn', 'template_xi70v3h', this)
+                .then(function () {
+                    alert('✅ Message sent successfully!');
+                    document.getElementById('contactForm').reset();
+                }, function (error) {
+                    alert('❌ Failed to send message: ' + JSON.stringify(error));
+                });
+        });
+            function showToast(message) {
+            const toast = document.getElementById("toast");
+            toast.textContent = message;
+            toast.classList.add("show");
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 4000); // Toast disappears after 4 seconds
+        }
+    </script>
+
+    <script>
+        function showSlide(index) {
+        const slides = document.querySelectorAll('.portfolio-slider .portfolio-item');
+        const buttons = document.querySelectorAll('.page-btn');
+
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            buttons[i].classList.remove('active');
+        });
+
+        slides[index].classList.add('active');
+        buttons[index].classList.add('active');
+        }
     </script>
     <script src="script.js"></script>
 </body>
