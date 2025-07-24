@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header & Navigation -->
+     <!-- Header & Navigation -->
     <header>
         <div class="container">
             <nav class="navbar">
@@ -22,15 +22,16 @@
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
                 <div class="hamburger">
                     <i class="fas fa-bars"></i>
                 </div>
-                
-
-
             </nav>
         </div>
     </header>
+
 
        <!-- Hero Section -->
         <section id="home" class="hero">
@@ -145,6 +146,9 @@
     <!-- Portfolio Filters (Optional: you can hide them if not needed) -->
     <div class="portfolio-filters">
       <button class="filter-btn active">All</button>
+      <button class="filter-btn">Frontend</button>
+      <button class="filter-btn">Backend</button>
+      <button class="filter-btn">Full Stack</button>
     </div>
 
     <!-- Portfolio Slides (One item per view) -->
@@ -180,7 +184,7 @@
             <span class="portfolio-tag">React.js</span>
             <span class="portfolio-tag">Node.js</span>
           </div>
-          <a href="https://github.com/your-fullstack-repo" target="_blank" class="github-link" >View on GitHub</a>
+          <a href="https://github.com/your-fullstack-repo" target="_blank" class="github-link" >Visit site</a>
         </div>
       </div>
 
@@ -319,45 +323,8 @@
     </footer>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        // Replace with your actual Public Key from EmailJS
-        emailjs.init("ycR6FL2UoxWEH-kFL");
-
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            emailjs.sendForm('service_n31kaxn', 'template_xi70v3h', this)
-                .then(function () {
-                    alert('✅ Message sent successfully!');
-                    document.getElementById('contactForm').reset();
-                }, function (error) {
-                    alert('❌ Failed to send message: ' + JSON.stringify(error));
-                });
-        });
-            function showToast(message) {
-            const toast = document.getElementById("toast");
-            toast.textContent = message;
-            toast.classList.add("show");
-            setTimeout(() => {
-                toast.classList.remove("show");
-            }, 4000); // Toast disappears after 4 seconds
-        }
+        
     </script>
-
-    <script>
-        function showSlide(index) {
-        const slides = document.querySelectorAll('.portfolio-slider .portfolio-item');
-        const buttons = document.querySelectorAll('.page-btn');
-
-        slides.forEach((slide, i) => {
-            slide.classList.remove('active');
-            buttons[i].classList.remove('active');
-        });
-
-        slides[index].classList.add('active');
-        buttons[index].classList.add('active');
-        }
-    </script>
-
     <script src="script.js"></script>
 </body>
 </html>
