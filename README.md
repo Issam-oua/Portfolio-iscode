@@ -24,7 +24,7 @@ Welcome to my personal portfolio website built with HTML, CSS, and JavaScript.
 
 **Issam Ouabi**  
 Full-Stack Developer | Founder of **ISCODE**  
-📫 Email: ouabi.issam.dev@gmail.com  
+📫 Email: ouabiissam24@gmail.com  
 🌐 Ko-fi: [ko-fi.com/issamoua](https://ko-fi.com/iscode)
 
 ---
