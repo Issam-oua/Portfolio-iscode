@@ -1,256 +1,377 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Issam Ouabi - Portfolio</title>
-    <link rel="icon" href="image/ISCODE-logo.png" type="">
+    <title>Issam Ouabi - Full Stack Developer</title>
+    <meta name="description" content="Professional portfolio of Issam Ouabi, Full Stack Developer specializing in Laravel and React.js">
+    <link rel="icon" href="assets/ISCODE-logo.png" type="image/x-icon">
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800&display=swap" as="style">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-     <!-- Header & Navigation -->
-    <header>
+    <!-- Loading Animation -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <span class="loader-text">Loading Portfolio</span>
+        </div>
+    </div>
+
+    <!-- 3D Background Element -->
+    <canvas id="threejs-bg"></canvas>
+
+    <!-- Header -->
+    <header class="header">
         <div class="container">
             <nav class="navbar">
-                <a href="#" class="logo">ISCODE</a>
+                <a href="#" class="logo" aria-label="ISCODE Logo">IS<span>CODE</span></a>
                 <ul class="nav-links">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#why-hire">Services</a></li>
-                    <li><a href="#experience">Resume</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home" class="nav-link active" data-text="Home">Home</a></li>
+                    <li><a href="#why-hire-me" class="nav-link" data-text="About">About</a></li>
+                    <li><a href="#skills" class="nav-link" data-text="Skills">Skills</a></li>
+                    <li><a href="#work" class="nav-link" data-text="Work">Work</a></li>
+                    <li><a href="#projects" class="nav-link" data-text="Projects">Projects</a></li>
+                    <li><a href="#contact" class="nav-link" data-text="Contact">Contact</a></li>
                 </ul>
-                <button class="theme-toggle" aria-label="Toggle theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <div class="hamburger">
-                    <i class="fas fa-bars"></i>
+                <div class="nav-right">
+                    <button class="theme-toggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="hamburger" aria-label="Menu">
+                        <div class="hamburger-line"></div>
+                    </div>
                 </div>
             </nav>
         </div>
     </header>
 
-
-       <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>Issam Ouabi <br> <span id="dynamic-role"></span></h1>
-                        <p>
-                            I'm a passionate <strong>Full Stack Developer</strong> with solid experience in building dynamic, responsive, and user-friendly web applications using 
-                            <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong>, <strong>React.js</strong>, <strong>Laravel</strong>, and <strong>MySQL</strong>. 
-                            I focus on clean code, smart architecture, and real user needs.
-                        </p>
-                        <a href="cv/cv-issam.pdf" target="_blank" class="btn">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                <polyline points="7 10 12 15 17 10"></polyline>
-                                <line x1="12" y1="15" x2="12" y2="3"></line>
-                            </svg>
-                            Download CV
-                        </a>
-                    </div>
-                    <div class="hero-image">
-                        <div class="profile-container">
-                            <img src="image/WhatsApp Image 2025-07-12 à 14.57.21_3047e3fd.jpg" alt="Issam Ouabi">
-                        </div>
-                    </div>
+    <!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line">Hello, I'm</span>
+                    <span class="title-line highlight">Issam Ouabi</span>
+                </h1>
+                <div class="dynamic-text-container">
+                    <h1>I'm a <span id="dynamic-role"></span></h1>
+                </div>
+                <p class="hero-description">
+                    I craft exceptional digital experiences with clean, efficient code and innovative solutions. 
+                    Specializing in full-stack development with Laravel and React.js.
+                </p>
+                <div class="hero-cta">
+                    <a href="cv/cv-issam.pdf" download class="gradient-btn download-btn">
+                        <span class="btn-text">Download CV</span>
+                        <span class="btn-icon">
+                            <i class="fas fa-download"></i>
+                        </span>
+                        <span class="hover-effect"></span>
+                    </a>
+                    <a href="#contact" class="gradient-btn hire-me-btn">
+                        <span class="btn-text">Hire Me</span>
+                        <span class="btn-icon">
+                            <i class="fas fa-handshake"></i>
+                        </span>
+                        <span class="hover-effect"></span>
+                        <span class="pulse-effect"></span>
+                    </a>
                 </div>
             </div>
-        </section>
-    <!-- Why Hire Me Section -->
-    <section id="why-hire" class="why-hire">
-        <div class="container">
-            <div class="section-title animate">
-                <h2>Why Hire Me?</h2>
-            </div>
-            <div class="hire-container">
-                <div class="hire-content animate">
-                    <p>I'm a passionate Full Stack Developer with a strong drive for delivering high-quality digital solutions. Curious, dynamic, and always learning, I fully commit to every project to ensure it meets client needs while pushing for innovation and efficiency.</p>
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <h3>Experience</h3>
-                            <ul>
-                                <li>Freelance Web Developer at CODECREW (2024 – Present)</li>
-                                <li>Full Stack Developer at F.MARSA MAROC (2025)</li>
-                                <li>Delivered internal and client-facing projects (invoicing systems, dashboards, order management)</li>
-                            </ul>
+            <div class="hero-image">
+                <div class="profile-container" id="profile-tilt">
+                    <div class="profile-image-wrapper">
+                        <img src="assets/WhatsApp Image 2025-07-12 à 14.57.21_3047e3fd.jpg" alt="Issam Ouabi" class="profile-image">
+                        <div class="profile-frame"></div>
+                        <div class="profile-shine"></div>
+                    </div>
+                    <div class="profile-badge">
+                        <span class="counter" data-count="5">0</span>
+                        <small>Projects</small>
+                    </div>
+                    <div class="profile-tech-icons">
+                        <div class="tech-icon" style="--i:1">
+                            <i class="fab fa-react"></i>
                         </div>
-                        <div class="feature-card">
-                            <h3>Education</h3>
-                            <ul>
-                                <li>Specialized Technician in Digital Development – ISTA Nador</li>
-                                <li>University Studies in Physics – FPN Nador</li>
-                                <li>Baccalaureate in Physical Sciences – Beni Ensar</li>
-                            </ul>
+                        <div class="tech-icon" style="--i:2">
+                            <i class="fab fa-laravel"></i>
                         </div>
-                        <div class="feature-card">
-                            <h3>Skills</h3>
-                            <ul>
-                                <li>Laravel, React.js, Tailwind CSS, JavaScript</li>
-                                <li>Deployment, hosting, backup, and database migrations</li>
-                                <li>Problem-solving, teamwork, adaptability</li>
-                            </ul>
-                        </div>
-                        <div class="feature-card">
-                            <h3>About Me</h3>
-                            <ul>
-                                <li>Creative and detail-oriented</li>
-                                <li>Strong communication skills</li>
-                                <li>Independent and collaborative</li>
-                                <li>Always eager to learn</li>
-                            </ul>
+                        <div class="tech-icon" style="--i:3">
+                            <i class="fab fa-js"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-     <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <div class="section-title animate">
-                <h2>My Experience</h2>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item animate">
-                    <div class="timeline-content">
-                        <h3>Full Stack Developer</h3>
-                        <h4>F.MARSA MAROC – DRT (Nador)</h4>
-                        <span>April 2025 (1 month)</span>
-                        <p>Developed an internal invoice management web application using Laravel and MySQL. Built responsive interfaces with Tailwind CSS and implemented advanced search and filtering features.</p>
-                    </div>
-                </div>
-                <div class="timeline-item animate">
-                    <div class="timeline-content">
-                        <h3>Freelance Web Developer</h3>
-                        <h4>CODECREW – Remote</h4>
-                        <span>Since April 2024</span>
-                        <p>Worked on both internal and client projects including dashboards and command systems. Used Laravel, React, and Azure to deliver scalable, user-friendly web applications.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-<!-- Portfolio Section -->
-<section id="portfolio" class="portfolio">
-  <div class="container">
-    <div class="section-title animate">
-      <h2>Latest Project</h2>
     </div>
-
-    <!-- Portfolio Filters (Optional: you can hide them if not needed) -->
-    <div class="portfolio-filters">
-      <button class="filter-btn active">All</button>
-      <button class="filter-btn">Frontend</button>
-      <button class="filter-btn">Backend</button>
-      <button class="filter-btn">Full Stack</button>
-    </div>
-
-    <!-- Portfolio Slides (One item per view) -->
-    <div class="portfolio-slider">
-      <!-- Slide 1 -->
-      <div class="portfolio-item active">
-        <div class="portfolio-img">
-          <img src="image/pexels-julieaagaard-2351274.jpg" alt="Frontend Project">
-        </div>
-        <div class="portfolio-info">
-          <h3>Frontend Project (Restaurant Website)</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat tempora vel sit molestias vitae atque accusantium iste voluptate.</p>
-          <div class="portfolio-tags">
-            <span class="portfolio-tag">HTML5</span>
-            <span class="portfolio-tag">CSS3</span>
-            <span class="portfolio-tag">JavaScript</span>
-          </div>
-          <a href="https://issam-oua.github.io/food-web/" target="_blank" class="github-link">Visit site</a>
-        </div>
-      </div>
-
-      <!-- Slide 2 -->
-      <div class="portfolio-item">
-        <div class="portfolio-img">
-          <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=1780&q=80" alt="Full Stack Project">
-        </div>
-        <div class="portfolio-info">
-          <h3>Full Stack Project</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat tempora vel sit molestias vitae atque accusantium iste voluptate.</p>
-          <div class="portfolio-tags">
-            <span class="portfolio-tag">MongoDB</span>
-            <span class="portfolio-tag">Express.js</span>
-            <span class="portfolio-tag">React.js</span>
-            <span class="portfolio-tag">Node.js</span>
-          </div>
-          <a href="https://github.com/your-fullstack-repo" target="_blank" class="github-link" >Visit site</a>
-        </div>
-      </div>
-
-      <!-- Slide 3 -->
-      <div class="portfolio-item">
-        <div class="portfolio-img">
-          <img src="image/desktop.png" alt="E-commerce Platform">
-        </div>
-        <div class="portfolio-info">
-          <h3>E-commerce Platform</h3>
-            <p>
-            A modern and responsive e-commerce platform designed for seamless online shopping. 
-            It features an intuitive user interface, fast performance, and mobile-friendly layouts — built with clean HTML5, CSS3, and JavaScript.
-            </p>
-          <div class="portfolio-tags">
-            <span class="portfolio-tag">HTML5</span>
-            <span class="portfolio-tag">CSS3</span>
-            <span class="portfolio-tag">JavaScript</span>
-          </div>
-          <a href="https://issam-oua.github.io/E-commerce.ma/" target="_blank" class="github-link">Visit site</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Custom Pagination -->
-    <div class="portfolio-pagination">
-      <button class="page-btn active" onclick="showSlide(0)">1</button>
-      <button class="page-btn" onclick="showSlide(1)">2</button>
-      <button class="page-btn" onclick="showSlide(2)">3</button>
-    </div>
-  </div>
 </section>
 
+    <!-- In your index.html -->
+<section id="why-hire-me" class="why-hire-me">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Why Hire Me?</h2>
+            <p class="section-subtitle">What I bring to your project</p>
+        </div>
 
+        <div class="hire-me-grid">
+            
+
+            <!-- Experience Card -->
+            <div class="hire-card experience-card">
+                <div class="card-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Experience</h3>
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Freelance Web Developer</strong> at CODECREW (2024 – Present)
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Full Stack Developer</strong> at F.MARSA MAROC (2025)
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        Delivered internal and client-facing projects (invoicing systems, dashboards, order management)
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Education Card -->
+            <div class="hire-card education-card">
+                <div class="card-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Education</h3>
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-certificate"></i>
+                        <strong>Specialized Technician</strong> in Digital Development – ISTA Nador
+                    </li>
+                    <li>
+                        <i class="fas fa-certificate"></i>
+                        <strong>University Studies</strong> in Physics – FPN Nador
+                    </li>
+                    <li>
+                        <i class="fas fa-certificate"></i>
+                        <strong>Baccalaureate</strong> in Physical Sciences – Beni Ensar
+                    </li>
+                </ul>
+            </div>
+
+           
+
+            <!-- Soft Skills Card -->
+            <div class="hire-card soft-skills-card">
+                <div class="card-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Professional Skills</h3>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Problem-solving</li>
+                    <li><i class="fas fa-check"></i> Teamwork</li>
+                    <li><i class="fas fa-check"></i> Adaptability</li>
+                </ul>
+            </div>
+
+            <!-- About Me Card -->
+            <div class="hire-card about-card">
+                <div class="card-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>About Me</h3>
+                <ul class="feature-list">
+                    <li><i class="fas fa-star"></i> Creative and detail-oriented</li>
+                    <li><i class="fas fa-star"></i> Strong communication skills</li>
+                    <li><i class="fas fa-star"></i> Independent and collaborative</li>
+                    <li><i class="fas fa-star"></i> Always eager to learn</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My Skills</h2>
+                <p class="section-subtitle">Technologies I work with</p>
+            </div>
+            <div class="skills-grid">
+                <!-- Skill items will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- In your index.html -->
+<section id="experience" class="experience">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Professional Journey</h2>
+            <p class="section-subtitle">My career timeline</p>
+        </div>
+        
+        <div class="timeline">
+            <!-- F.MARSA MAROC Experience -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <h3>Full Stack Developer</h3>
+                        <div class="timeline-company">
+                            <i class="fas fa-building"></i>
+                            <span>F.MARSA MAROC – DRT (Nador)</span>
+                        </div>
+                        <div class="timeline-date">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>April 2025 (1 month)</span>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <ul class="timeline-highlights">
+                            <li>
+                                <i class="fas fa-caret-right"></i>
+                                Developed internal invoice management web application
+                            </li>
+                            <li>
+                                <i class="fas fa-caret-right"></i>
+                                Implemented with Laravel and MySQL backend
+                            </li>
+                            <li>
+                                <i class="fas fa-caret-right"></i>
+                                Created responsive interfaces with Tailwind CSS
+                            </li>
+                            <li>
+                                <i class="fas fa-caret-right"></i>
+                                Built advanced search and filtering features
+                            </li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CODECREW Experience -->
+            <div class="timeline-item">
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <h3>Freelance Web Developer</h3>
+                        <div class="timeline-company">
+                            <i class="fas fa-building"></i>
+                            <span>CODECREW – Remote</span>
+                        </div>
+                        <div class="timeline-date">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>Since April 2024</span>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <ul class="timeline-highlights">
+                            <li>
+                                <i class="fas fa-caret-right"></i>
+                                Developed internal and client-facing projects
+                            </li>
+                            <li>
+                                <i class="fas fa-caret-right"></i>
+                                Built dashboards and command systems
+                            </li>
+                            <li>
+                                <i class="fas fa-caret-right"></i>
+                                Worked with Laravel, React, and Azure
+                            </li>
+                            <li>
+                                <i class="fas fa-caret-right"></i>
+                                Delivered scalable, user-friendly applications
+                            </li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Azure</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+   <!-- Projects Section -->
+<section id="projects" class="projects">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">My recent work</p>
+        </div>
+        
+        <div class="projects-carousel">
+            <button class="carousel-nav prev" aria-label="Previous project">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="projects-slider">
+                <!-- Projects will be dynamically inserted here -->
+            </div>
+            
+            <button class="carousel-nav next" aria-label="Next project">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <div class="carousel-dots">
+            <!-- Dots will be added by JavaScript -->
+        </div>
+    </div>
+</section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <div class="section-title animate">
-                <h2>Let's Work Together</h2>
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's work together</p>
             </div>
             <div class="contact-container">
-                <div class="contact-info animate">
-                    <h3>Contact Me!</h3>
-                    <p>If you're looking for a passionate full-stack developer to bring your project to life, feel free to reach out. I'm always open to new challenges and collaborations!</p>
-                    
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>Feel free to reach out for collaborations or just to say hi!</p>
                     <div class="contact-details">
-                        <div class="contact-detail">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Phone</h4>
-                                <p>+212 767 154 873</p>
-                            </div>
-                        </div>
-                        <div class="contact-detail">
+                        <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="contact-text">
                                 <h4>Email</h4>
-                                <p>ouabiissam24@gmail.com</p>
+                                <a href="mailto:ouabiissam24@gmail.com">ouabiissam24@gmail.com</a>
                             </div>
                         </div>
-                        <div class="contact-detail">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <a href="tel:+212767154873">+212 767 154 873</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
@@ -260,107 +381,115 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="contact-form animate">
-                <form id="contactForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="fullName">Full Name</label>
-                            <input type="text" id="fullName" name="from_name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="from_email" required>
-                        </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/ouabi-issam/" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/Issam-oua" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/isocde_dev?igsh=ZzEzdXhjdzlzY3ph" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
+                </div>
+                <div class="contact-form">
+                <form id="contactForm" class="form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="from_name" required>
+                        <label for="name">Full Name</label>
+                        <span class="focus-border"></span>
                     </div>
                     <div class="form-group">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <input type="email" id="email" name="from_email" required>
+                        <label for="email">Email Address</label>
+                        <span class="focus-border"></span>
                     </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" required>
+                        <label for="subject">Subject</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" required></textarea>
+                        <label for="message">Your Message</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    <button type="submit" class="gradient-btn send-btn" id="submitBtn">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </span>
+                        <span class="hover-effect"></span>
+                    </button>
                 </form>
-            </div>
-            <div id="toast" class="toast">✅ Message sent successfully!</div>
-
+                <div id="toast" class="toast"></div>
                 </div>
             </div>
         </div>
     </section>
 
-
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <a href="#" class="footer-logo">ISCODE</a>
-            <div class="footer-social">
-                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/isocde_dev?igsh=ZzEzdXhjdzlzY3ph" class="social-link"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/ouabi-issam/" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/Issam-oua" class="social-link"><i class="fab fa-github"></i></a>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#" class="logo">IS<span>CODE</span></a>
+                </div>
+                <div class="footer-links">
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#skills" class="footer-link">Skills</a>
+                    <a href="#work" class="footer-link">Work</a>
+                    <a href="#projects" class="footer-link">Projects</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/ouabi-issam/" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/Issam-oua" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/isocde_dev?igsh=ZzEzdXhjdzlzY3ph" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
             </div>
-            <div class="footer-links">
-                <a href="#home">Home</a>
-                <a href="#why-hire">Services</a>
-                <a href="#experience">Resume</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="copyright">
-                &copy; 2025 ISCode. All Rights Reserved.
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> ISCode. All rights reserved.</p>
+                <p>Made with <i class="fas fa-heart"></i> and <i class="fas fa-code"></i></p>
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
+     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Replace old script with new version -->
+    <!-- Replace your old EmailJS script with this -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+    // Initialize EmailJS with your Public Key
+    (function() {
+        emailjs.init({
+        publicKey: "ycR6FL2UoxWEH-kFL",
+        blockHeadless: true, // Prevents spam
+        });
+    })();
+    </script
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    
+    <script src="js/app.js"></script>
     <script>
-        // Replace with your actual Public Key from EmailJS
-        emailjs.init("ycR6FL2UoxWEH-kFL");
-
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            emailjs.sendForm('service_n31kaxn', 'template_xi70v3h', this)
-                .then(function () {
-                    alert('✅ Message sent successfully!');
-                    document.getElementById('contactForm').reset();
-                }, function (error) {
-                    alert('❌ Failed to send message: ' + JSON.stringify(error));
-                });
-        });
-            function showToast(message) {
-            const toast = document.getElementById("toast");
-            toast.textContent = message;
-            toast.classList.add("show");
-            setTimeout(() => {
-                toast.classList.remove("show");
-            }, 4000); // Toast disappears after 4 seconds
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+  
+});
     </script>
-
-    <script>
-        function showSlide(index) {
-        const slides = document.querySelectorAll('.portfolio-slider .portfolio-item');
-        const buttons = document.querySelectorAll('.page-btn');
-
-        slides.forEach((slide, i) => {
-            slide.classList.remove('active');
-            buttons[i].classList.remove('active');
-        });
-
-        slides[index].classList.add('active');
-        buttons[index].classList.add('active');
-        }
-    </script>
-    <script src="script.js"></script>
+   
 </body>
 </html>
-
