@@ -218,7 +218,9 @@ section {
 .hamburger.active .hamburger-line:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
-
+.nav-right{
+    display: flex;
+}
 .theme-toggle {
     background: none;
     border: none;
